@@ -19,6 +19,7 @@ You should have a discord developer account
    ```
    TOKEN=<your token>
    WELCOME_MESSAGE_CHANNEL_ID=<your channel id>
+   PREFIX=<your prefix>
    ```
 5. Activate the shell
 

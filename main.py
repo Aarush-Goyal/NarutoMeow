@@ -3,11 +3,11 @@
 import discord
 from discord import embeds
 from discord.ext import commands
-from config import TOKEN, WELCOME_MESSAGE_CHANNEL_ID
+from config import PREFIX, TOKEN, WELCOME_MESSAGE_CHANNEL_ID
 
 # client
 
-client = commands.Bot(command_prefix='--')
+client = commands.Bot(command_prefix=PREFIX)
 
 
 @client.event
