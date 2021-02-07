@@ -1,5 +1,7 @@
 # My Bot
 
+[Add the bot on your server](https://discord.com/oauth2/authorize?client_id=808017136563257404&scope=bot&permissions=2147483647)
+
 ## Prerequisites
 
 You should have a discord developer account
