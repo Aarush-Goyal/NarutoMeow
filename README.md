@@ -1,6 +1,11 @@
-# My Bot
+# Naruto Meow
 
-[Add the bot on your server](https://discord.com/oauth2/authorize?client_id=808017136563257404&scope=bot&permissions=2147483647)
+<img src="./images/naruto.png" align="center">
+<br>
+<br>
+<a href="https://discord.com/oauth2/authorize?client_id=808017136563257404&scope=bot&permissions=2147483647" ><h4 align="center">Add the bot on your server</h4></a>
+<br>
+<br>
 
 ## Prerequisites
 
