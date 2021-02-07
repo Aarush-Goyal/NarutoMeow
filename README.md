@@ -3,7 +3,9 @@
 <img src="./images/hero.png">
 <br>
 <br>
-<a href="https://discord.com/oauth2/authorize?client_id=808017136563257404&scope=bot&permissions=2147483647" ><h4 align="center">Add the bot on your server</h4></a>
+<h4 align="center">
+<a href="https://discord.com/oauth2/authorize?client_id=808017136563257404&scope=bot&permissions=2147483647" >Add the bot on your server</a>
+</h4>
 <br>
 <br>
 
