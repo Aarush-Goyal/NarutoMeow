@@ -18,7 +18,7 @@ You should have a discord developer account
 1. Fork the repo
 2. Clone the repo
    ```bashPrerequisites
-   git clone https://www.github.com/<your username>/my-bot.git
+   git clone https://www.github.com/<your username>/NarutoMeow.git
    ```
 3. Install the packages required
    ```bash
