@@ -2,6 +2,7 @@
 
 import discord
 from discord import embeds
+from discord import message
 from discord.ext import commands
 from config import PREFIX, TOKEN, WELCOME_MESSAGE_CHANNEL_ID
 
@@ -27,6 +28,11 @@ async def on_message(message):
 @client.command(name="greet")
 async def greet(context):
     await context.message.channel.send("Greetings!")
+
+
+@client.command(name="love-me")
+async def love_me(context, *args):
+    await context.message.author.send('The bot loves you {name}'.format(name="Arush"))
 
 
 @client.command(name='version')
