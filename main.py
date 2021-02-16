@@ -32,7 +32,7 @@ async def greet(context):
 
 @client.command(name="love-me")
 async def love_me(context, *args):
-    await context.message.author.send('The bot loves you {name}'.format(name="Arush"))
+    await context.message.author.send('The bot loves you @{name}'.format(name=context.message.author))
 
 
 @client.command(name='version')
