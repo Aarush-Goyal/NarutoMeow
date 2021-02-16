@@ -40,3 +40,18 @@ You should have a discord developer account
    ```bash
     python main.py
    ```
+
+## Setting up docker
+
+1. The build command
+   ```bash
+   docker build -t <your image tag> .
+   ```
+2. The run command
+   ```bash
+   docker run --name <your container name> <your image tag>
+   ```
+3. Stop it with this command after you are done with the container
+   ```bash
+   docker stop <your container name>
+   ```
