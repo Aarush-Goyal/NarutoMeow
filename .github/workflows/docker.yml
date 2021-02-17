@@ -1,0 +1,16 @@
+name: Docker build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: builds docker image
+        run: |
+          docker build -t aarushgoyal/discord-bot .
+      - name: pushes to dockerhub
+        run: |
+          docker push aarushgoyal/discord-bot
