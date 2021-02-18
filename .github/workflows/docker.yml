@@ -17,3 +17,6 @@ jobs:
       - name: builds docker image
         run: |
           docker build -t aarushgoyal/discord-bot .
+      - name: pushing the docker image
+        run: |
+          docker push aarushgoyal/discord-bot
