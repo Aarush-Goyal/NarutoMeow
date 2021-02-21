@@ -27,7 +27,7 @@ async def on_message(message):
 
 @client.command(name="greet")
 async def greet(context):
-    await context.message.channel.send("Greetings!")
+    await context.message.channel.send("Greetings to all!")
 
 
 @client.command(name="love-me")
