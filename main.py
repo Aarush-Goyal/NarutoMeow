@@ -1,10 +1,11 @@
-# https://discord.com/oauth2/authorize?client_id=808017136563257404&scope=bot&permissions=2147483647 -- oauth link to integrate the bot on your server
+# https://discord.com/oauth2/authorize?client_id=808017136563257404&scope=bot&permissions=2147483647
+# -- oauth link to integrate the bot on your server
 
 import discord
 from discord import embeds
 from discord import message
 from discord.ext import commands
-from config import PREFIX, TOKEN, WELCOME_MESSAGE_CHANNEL_ID
+from config.config import PREFIX, TOKEN, WELCOME_MESSAGE_CHANNEL_ID
 
 # client
 
@@ -32,7 +33,8 @@ async def greet(context):
 
 @client.command(name="love-me")
 async def love_me(context, *args):
-    await context.message.author.send('I love you @{name}!'.format(name=context.message.author))
+    await context.message.author.send('I love you @{name}!'
+                                      .format(name=context.message.author))
 
 
 @client.command(name='version')
