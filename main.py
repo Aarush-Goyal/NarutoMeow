@@ -20,10 +20,6 @@ async def load(context, extension):
     client.load_extension(f'cogs.{extension}')
 
 
-@commands.command()
-async def unload(context, extension):
-    client.unload_extension(f'cogs.{extension}')
-
 for filename in os.listdir("./cogs"):
     if filename.endswith(".py"):
         client.load_extension(f'cogs.{filename[:-3]}')
