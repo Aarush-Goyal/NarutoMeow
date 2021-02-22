@@ -12,7 +12,7 @@ class WhoAmI(commands.Cog):
     # Commands
     @ commands.command(brief="Tells the person their username")
     async def who_am_i(self, context, *args):
-        await context.message.channel.send(f'You are @{context.message.author}')
+        await context.message.channel.send(f'You are @{context.message.author}!')
 
 
 def setup(client):
