@@ -7,6 +7,8 @@ from config.config import PREFIX, TOKEN, WELCOME_MESSAGE_CHANNEL_ID
 # client
 
 client = commands.Bot(command_prefix=PREFIX)
+
+
 # ---------------------------------------------------------------------------------------------
 
 
