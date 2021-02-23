@@ -1,7 +1,6 @@
 import discord
 from discord import client
 from discord.ext import commands
-# from main import WELCOME_MESSAGE_CHANNEL_ID
 
 
 class Send(commands.Cog):
@@ -16,6 +15,9 @@ class Send(commands.Cog):
             await context.message.channel.send(f'https://gph.is/g/EGyyPx1')
         if("vagina" in args):
             await context.message.channel.send(f'http://gph.is/2d4NgsA')
+        if("maal" in args):
+            await context.message.channel.send(f'https://gph.is/2NxhzIo')
+            await context.message.author.send(f'Chalo kabhi mars par Himalaya bhul jaoge!')
 
 
 def setup(client):
