@@ -21,6 +21,14 @@ class Random(commands.Cog):
                         embed = discord.Embed(title="Meow")
                         embed.set_image(url=data['file'])
                         await context.send(embed=embed)
+        if("dog" in args):
+            async with context.message.channel.typing():
+                async with aiohttp.ClientSession() as cs:
+                    async with cs.get("http://random.dog/woof.json") as r:
+                        data = await r.json()
+                        embed = discord.Embed(title="Woof")
+                        embed.set_image(url=data['url'])
+                        await context.send(embed=embed)
 
 
 def setup(client):
