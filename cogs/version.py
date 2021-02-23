@@ -13,7 +13,7 @@ class Version(commands.Cog):
         myEmbed = discord.Embed(title="The Current Version",
                                 description="The bot is in Version 1.0",
                                 color=0xfcba03)
-        myEmbed.add_field(name="Version Code:", value="v1.2.0", inline=False)
+        myEmbed.add_field(name="Version Code:", value="v1.3.0", inline=False)
         myEmbed.add_field(name="Date released:",
                           value="8th Feb 2021",
                           inline=False)
