@@ -18,6 +18,7 @@ class Send(commands.Cog):
         if("maal" in args):
             await context.message.channel.send(f'https://gph.is/2NxhzIo')
             await context.message.author.send(f'Chalo kabhi mars par Himalaya bhul jaoge!')
+            await context.message.author.send(f'https://gph.is/g/aKQXLwe')
 
 
 def setup(client):
