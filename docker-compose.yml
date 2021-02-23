@@ -2,7 +2,7 @@ version: "3"
 services:
   naruto-meow:
     image: aarushgoyal/discord-bot
-    env_file: .env
+    env_file: ./.env
   watchtower:
     image: containrrr/watchtower
     volumes:
