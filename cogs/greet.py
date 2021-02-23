@@ -12,7 +12,7 @@ class Greet(commands.Cog):
     # Commands
     @ commands.command(brief="Greets people with a gif")
     async def greet(self, ctx):
-        await ctx.send("Greetings! :innocent:")
+        await ctx.send("Greetings to everyone! :innocent:")
         await ctx.send("https://media.giphy.com/media/MF6DEuZXk1VNsjG675/giphy.gif")
 
 
