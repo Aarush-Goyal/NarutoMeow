@@ -4,9 +4,7 @@ services:
     image: aarushgoyal/discord-bot
     env_file: .env
   watchtower:
-    image: v2tec/watchtower
+    image: containrrr/watchtower
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     command: --interval 30
-
-  # docker run -d --name watchtower -v /var/run/docker.sock:/var/run/docker.sock v2tec/watchtower naruto-meow
