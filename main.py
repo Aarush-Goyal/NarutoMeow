@@ -15,7 +15,7 @@ client = commands.Bot(command_prefix=PREFIX)
 @client.event
 async def on_ready():
     general_channnel = client.get_channel(WELCOME_MESSAGE_CHANNEL_ID)
-    await general_channnel.send('I am online!')
+    await general_channnel.send('Meow!')
     await client.change_presence(status=discord.Status.online, activity=discord.Game("with Elon Musk on Mars"))
 
 
