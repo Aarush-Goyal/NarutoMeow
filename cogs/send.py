@@ -19,6 +19,8 @@ class Send(commands.Cog):
             await context.message.channel.send(f'https://gph.is/2NxhzIo')
             await context.message.author.send(f'Chalo kabhi mars par Himalaya bhul jaoge!')
             await context.message.author.send(f'https://gph.is/g/aKQXLwe')
+        if("pyaar" in args):
+            await context.message.author.send(f'Pyaar nahi hai mere pass')
 
 
 def setup(client):
