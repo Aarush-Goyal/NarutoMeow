@@ -14,9 +14,21 @@ jobs:
           DOCKER_HUB_PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
         run: |
           docker login -u $DOCKER_HUB_ID -p $DOCKER_HUB_PASSWORD
-      - name: builds docker image
+      - name: builds docker bot image
         run: |
-          docker build -t aarushgoyal/discord-bot .
-      - name: pushing the docker image
+          docker build -t aarushgoyal/discord-bot ./bot
+      - name: builds docker api image
+        run: |
+          docker build -t aarushgoyal/narutomeow-api ./api
+      - name: builds docker scraper image
+        run: |
+          docker build -t aarushgoyal/narutomeow-scraper ./scraper
+      - name: pushing the docker bot image
         run: |
           docker push aarushgoyal/discord-bot
+      - name: pushing the docker scraper image
+        run: |
+          docker push aarushgoyal/narutomeow-scraper
+      - name: pushing the docker api image
+        run: |
+          docker push aarushgoyal/narutomeow-api

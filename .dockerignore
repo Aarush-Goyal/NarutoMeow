@@ -5,3 +5,5 @@ Pipfile.lock
 README.md
 .env
 docker-compose.yml
+api
+scraper

@@ -9,3 +9,13 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - /root/.docker/config.json:/config.json
     command: --debug --interval 120
+  api:
+    image: aarushgoyal/narutomeow-api
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - 8000:8000
+  scraper:
+    image: aarushgoyal/narutomeow-scraper
+    restart: unless-stopped
+    env_file: .env
