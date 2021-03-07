@@ -1,4 +1,4 @@
-export const getIndex = (req, res) => {
+export const getAmzn = (req, res) => {
   res.json([
     {
       url:
@@ -19,4 +19,9 @@ export const getIndex = (req, res) => {
       channelId: 79800,
     },
   ]);
+};
+
+export const postAmzn = (req, res) => {
+  console.log(req.body);
+  res.status(200).send("Created Users");
 };

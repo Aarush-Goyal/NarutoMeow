@@ -1,7 +1,8 @@
 import express from "express";
-import { getIndex } from "../controllers/index.js";
+import { getAmzn, postAmzn } from "../controllers/index.js";
 const router = express.Router();
 
-router.get("/amzn", getIndex);
+router.get("/amzn", getAmzn);
+router.post("/amzn", postAmzn);
 
 export default router;

@@ -5,6 +5,10 @@ import indexRoutes from "./routes/index.js";
 
 const app = express();
 
+// middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 // using routes
 app.use("/api/v1/", indexRoutes);
 
