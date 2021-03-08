@@ -58,7 +58,7 @@ const startTracking = (urls) => {
 axios
   .get(`${DOMAIN}/api/v1/amzn`)
   .then((res) => res.data)
-  .then((res) => startTracking(res))
+  .then((res) => (res !== undefined ? startTracking(res) : pass))
   .catch((err) => console.log(err));
 
 // ----------------------------------------------
