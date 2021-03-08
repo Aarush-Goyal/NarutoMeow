@@ -11,7 +11,13 @@ const run = async (url) => {
 
   const browser = await puppeteer.launch({
     headless: true,
-    args: ["--no-sandbox", "--disable-gpu"],
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-accelerated-2d-canvas",
+      "--disable-gpu",
+    ],
   });
 
   // ------------------------------------------
@@ -29,7 +35,8 @@ const run = async (url) => {
     let currentPrice = Number(price.replace(/[^0-9.-]+/g, ""));
     console.log(currentPrice);
   });
-  browser.close();
+  await page.close();
+  await browser.close();
 
   // -------------------------------------------
 };
