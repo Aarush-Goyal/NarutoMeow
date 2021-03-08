@@ -25,20 +25,34 @@ const run = async (url) => {
   const page = await browser.newPage(); // page
 
   await page.setViewport({ height: 960, width: 1200 }); // setting viewport h,w
-  await page.goto(`${url}`); // redirecting to url
-  let html = await page.evaluate(() => document.body.innerHTML); //html
 
-  // price--------------------------------------
+  try {
+    await page.goto(`${url}`);
+  } catch (error) {
+    throw new Error(error);
+  } finally {
+    let html = await page.evaluate(() => document.body.innerHTML); //html
 
-  $("#priceblock_ourprice", html).each(function () {
-    let price = $(this).text();
-    let currentPrice = Number(price.replace(/[^0-9.-]+/g, ""));
-    console.log(currentPrice);
-  });
-  await page.close();
-  await browser.close();
+    // price--------------------------------------
 
-  // -------------------------------------------
+    $("#priceblock_ourprice", html).each(function () {
+      let price = $(this).text();
+      let currentPrice = Number(price.replace(/[^0-9.-]+/g, ""));
+      console.log(currentPrice);
+    });
+
+    // -------------------------------------------
+
+    await page.close();
+    await browser.close();
+    const psLookup = await ps.lookup({ pid: browserPID });
+
+    for (let proc of psLookup) {
+      if (_.has(proc, "pid")) {
+        await ps.kill(proc.pid, "SIGKILL");
+      }
+    }
+  }
 };
 
 const checkPrices = (urls) => {
