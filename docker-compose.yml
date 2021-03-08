@@ -19,3 +19,4 @@ services:
     image: aarushgoyal/narutomeow-scraper
     restart: unless-stopped
     env_file: .env
+    command: --init
