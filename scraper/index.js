@@ -11,13 +11,7 @@ const run = async (url) => {
 
   const browser = await puppeteer.launch({
     headless: true,
-    args: [
-      "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--disable-dev-shm-usage",
-      "--disable-accelerated-2d-canvas",
-      "--disable-gpu",
-    ],
+    args: ["--no-sandbox", "--disable-gpu"],
   });
 
   // ------------------------------------------
@@ -33,19 +27,12 @@ const run = async (url) => {
   } finally {
     let html = await page.evaluate(() => document.body.innerHTML); //html
 
-    // price--------------------------------------
-
     $("#priceblock_ourprice", html).each(function () {
       let price = $(this).text();
       let currentPrice = Number(price.replace(/[^0-9.-]+/g, ""));
       console.log(currentPrice);
     });
-
-    // -------------------------------------------
-
-    await page.close();
-    await browser.close();
-    const psLookup = await ps.lookup({ pid: browserPID });
+    browser.close();
 
     for (let proc of psLookup) {
       if (_.has(proc, "pid")) {
