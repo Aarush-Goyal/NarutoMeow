@@ -47,3 +47,15 @@ You should have a discord developer account
    ```bash
    docker-compose up
    ```
+
+> Use the given cron to take care of the zombie processes spun up by puppeteer
+
+```bash
+crontab -e
+```
+
+```
+# kill zombies
+* * * * * kill -9 `ps -xaw -o state -o ppid | grep Z | grep -v PID | awk '{print $2}'`
+
+```
