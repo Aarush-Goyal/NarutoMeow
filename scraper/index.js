@@ -18,6 +18,7 @@ const run = async (url) => {
       "--disable-accelerated-2d-canvas",
       "--disable-gpu",
     ],
+    executablePath: "google-chrome-stable",
   });
 
   // ------------------------------------------

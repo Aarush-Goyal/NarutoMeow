@@ -1,12 +1,5 @@
 FROM node:15-slim
 
-ADD https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64 /usr/local/bin/dumb-init
-RUN chmod +x /usr/local/bin/dumb-init
-
-WORKDIR /app
-
-COPY package.json .
-
 RUN apt-get update \
     && apt-get install -y wget gnupg \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
@@ -17,10 +10,12 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 
+WORKDIR /app
+
+COPY package.json .
+
 RUN npm install
 
 COPY . .
-
-ENTRYPOINT ["dumb-init", "--"]
 
 CMD ["npm", "start"]
