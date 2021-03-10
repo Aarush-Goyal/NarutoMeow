@@ -2,20 +2,26 @@ version: "3"
 services:
   naruto-meow:
     image: aarushgoyal/discord-bot
+    depends_on:
+      - api
     env_file: .env
+    restart: always
   watchtower:
     image: containrrr/watchtower
+    restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - /root/.docker/config.json:/config.json
     command: --interval 120
   api:
     image: aarushgoyal/narutomeow-api
-    restart: unless-stopped
+    restart: always
     env_file: .env
     ports:
       - 8000:8000
   scraper:
     image: aarushgoyal/narutomeow-scraper
-    restart: unless-stopped
+    restart: always
+    depends_on:
+      - api
     env_file: .env
