@@ -1,9 +1,10 @@
 const puppeteer = require("puppeteer");
 const $ = require("cheerio");
 const CronJob = require("cron").CronJob;
-const nodemailer = require("nodemailer");
 const axios = require("axios");
 const { DOMAIN } = require("./config");
+const io = require("socket.io-client");
+const socket = io(DOMAIN);
 
 const run = async (url) => {
   //
@@ -35,6 +36,7 @@ const run = async (url) => {
     let price = $(this).text();
     let currentPrice = Number(price.replace(/[^0-9.-]+/g, ""));
     console.log(currentPrice);
+    socket.emit("message", currentPrice);
   });
   await page.close();
   await browser.close();
