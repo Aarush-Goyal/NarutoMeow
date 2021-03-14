@@ -26,5 +26,5 @@ app.use("/api/v1/", indexRoutes);
 // websocket
 io.on("connection", (socket) => {
   console.log("Socket Connected");
-  socket.on("message", (msg) => console.log(msg));
+  io.on("message", (msg) => console.log(msg));
 });
