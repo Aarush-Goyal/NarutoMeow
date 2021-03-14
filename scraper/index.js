@@ -1,3 +1,4 @@
+const puppeteer = require("puppeteer");
 const $ = require("cheerio");
 const CronJob = require("cron").CronJob;
 const axios = require("axios");
@@ -6,31 +7,40 @@ const io = require("socket.io-client");
 const socket = io(DOMAIN);
 
 const run = (url, targetPrice) => {
-  axios
-    .get(`${url}`)
-    .then((response) => {
-      let html = response.data;
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-dev-shm-usage",
+      "--disable-accelerated-2d-canvas",
+      "--disable-gpu",
+    ],
+    executablePath: "google-chrome-stable",
+  });
 
-      $("#priceblock_ourprice", html).each(function () {
-        let price = $(this).text();
-        let currentPrice = Number(price.replace(/[^0-9.-]+/g, ""));
-        console.log(currentPrice);
-        if (currentPrice <= targetPrice) socket.emit("message", currentPrice);
-      });
+  const page = await browser.newPage(); // page
 
-      $("#priceblock_dealprice", html).each(function () {
-        let price = $(this).text();
-        let currentPrice = Number(price.replace(/[^0-9.-]+/g, ""));
-        console.log(currentPrice);
-        if (currentPrice <= targetPrice) socket.emit("message", currentPrice);
-      });
-    })
+  await page.setViewport({ height: 960, width: 1200 }); // setting viewport h,w
+  await page.goto(`${url}`); // redirecting to url
+  let html = await page.evaluate(() => document.body.innerHTML); //html
 
-    .catch((err) => console.log(err));
+  $("#priceblock_ourprice", html).each(function () {
+    let price = $(this).text();
+    let currentPrice = Number(price.replace(/[^0-9.-]+/g, ""));
+    console.log(currentPrice);
+    socket.emit("message", currentPrice);
+  });
+  
+  $("#priceblock_dealprice", html).each(function () {
+    let price = $(this).text();
+    let currentPrice = Number(price.replace(/[^0-9.-]+/g, ""));
+    console.log(currentPrice);
+    socket.emit("message", currentPrice);
+  });
+  await page.close();
+  await browser.close();
 
-  // price--------------------------------------
-
-  // -------------------------------------------
 };
 
 const checkPrices = (urls) => {
@@ -39,8 +49,8 @@ const checkPrices = (urls) => {
 
 const startTracking = (urls) => {
   let job = new CronJob(
-    "* * * * *",
-    // "*/5 * * * *",
+    // "* * * * *",
+    "*/5 * * * *",
     () => {
       checkPrices(urls);
     },
