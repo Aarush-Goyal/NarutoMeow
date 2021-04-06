@@ -6,7 +6,11 @@ const { DOMAIN } = require("./config");
 const io = require("socket.io-client");
 const socket = io(DOMAIN);
 
-const run = (url, targetPrice) => {
+console.log(
+  "h/////////////////////////////////////////////////////////////////////////////////////////////o+ \nh                                                                                             -+ \nh                                                                                             -+ \nh                                                                                             -+ \nh                                                                                             -+ \nh             ``                                                                              -+ \nh         `/yhddhy/`                                                                          -+ \nh         yMMm+omNNy   .:+oo+-`  `+++`-+-  -/oo/.:++-  +++.:+o+:`    .:+oo/-`  .+++`:+.       -+ \nh         hMMm+---..  omMNdmMMd: -MMMdMM/`yNMNmmmNMMs `MMMmmdmMMm/ `yNMmddNMh- :MMMdMM/       -+ \nh         `+hmNMNdy- :MMM-``/++/ -MMMs:-`oMMm-``-NMMs `MMMs.`.oMMN`sMMm+/+hMMm :MMMo:-`       -+ \nh         --:-.:yMMN`/MMN`  .--- -MMM`   yMMd`  `dMMs `MMM/   :MMM.yMMmoooyyys :MMM           -+ \nh         sNMNsodMMd``hMMdsymNN+ -MMM`   -mMMdyymMMMs `MMMNhshNMMs .mMNyoymmd: :MMM           -+ \nh          -oyhhhs/`  `:shhhyo-  .hhh     `+yhhy/ohh+ `MMM+shhhs:   `/shhhy+.  -hhh           -+ \nh                                                     `MMM-                                   -+ \nh                                                     `MMM-                                   -+ \nh                                                      ...                                    -+ \nh                                                                                             -+ \nh                                                                                             -+ \nh/////////////////////////////////////////////////////////////////////////////////////////////++ \n                                                                                                "
+);
+
+const run = async (url, targetPrice) => {
   const browser = await puppeteer.launch({
     headless: true,
     args: [
@@ -31,7 +35,7 @@ const run = (url, targetPrice) => {
     console.log(currentPrice);
     socket.emit("message", currentPrice);
   });
-  
+
   $("#priceblock_dealprice", html).each(function () {
     let price = $(this).text();
     let currentPrice = Number(price.replace(/[^0-9.-]+/g, ""));
@@ -40,7 +44,6 @@ const run = (url, targetPrice) => {
   });
   await page.close();
   await browser.close();
-
 };
 
 const checkPrices = (urls) => {
