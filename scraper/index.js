@@ -1,6 +1,6 @@
 const puppeteer = require("puppeteer");
 const $ = require("cheerio");
-const CronJob = require("cron").CronJob;
+// const CronJob = require("cron").CronJob;
 const axios = require("axios");
 const { DOMAIN } = require("./config");
 const io = require("socket.io-client");
@@ -50,28 +50,28 @@ const checkPrices = (urls) => {
   urls.map((url) => run(url.url, url.targetPrice));
 };
 
-const startTracking = (urls) => {
-  let job = new CronJob(
-    // "* * * * *",
-    "*/5 * * * *",
-    () => {
-      checkPrices(urls);
-    },
-    null,
-    true,
-    null,
-    null,
-    true
-  );
-  job.start();
-}; // cron
+// const startTracking = (urls) => {
+//   let job = new CronJob(
+//     // "* * * * *",
+//     "*/5 * * * *",
+//     () => {
+//       checkPrices(urls);
+//     },
+//     null,
+//     true,
+//     null,
+//     null,
+//     true
+//   );
+//   job.start();
+// }; // cron
 
 // -----------------Test only-------------------
 
 axios
   .get(`${DOMAIN}/api/v1/amzn`)
   .then((res) => res.data)
-  .then((res) => startTracking(res))
+  .then((res) => checkPrices(res))
   .catch((err) => console.log(err));
 
 // ----------------------------------------------
