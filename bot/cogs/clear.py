@@ -13,11 +13,11 @@ class Clear(commands.Cog):
     async def send(self, context, *args):
         if (len(args) > 0):
             await context.message.channel.purge(limit=int(args[0]))
-            await context.message.channel.send(f'https://gph.is/g/ZWrdGp6')
+            await context.message.channel.send(f'https://gph.is/2S34plo')
             await context.message.channel.send(f'Cleared {int(args[0])} messages')
         else:
             await context.message.channel.purge(limit=10)
-            await context.message.channel.send(f'https://gph.is/g/ZWrdGp6')
+            await context.message.channel.send(f'https://gph.is/2S34plo')
             await context.message.channel.send(f'Cleared 10 messages')
 
 
