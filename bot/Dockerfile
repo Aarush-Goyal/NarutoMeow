@@ -2,12 +2,10 @@ FROM python:3.8.5
 
 WORKDIR /app
 
-RUN pip install pipenv
+COPY requirements.txt .
 
-COPY Pipfile .
-
-RUN pipenv install --deploy --ignore-pipfile
+RUN pip install -r requirements.txt
 
 COPY . .
 
-CMD ["pipenv", "run", "python", "main.py"]
+CMD ["python", "main.py"]

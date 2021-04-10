@@ -2,12 +2,20 @@ import os
 import discord
 from discord.activity import Game
 from discord.ext import commands, tasks
-from config.config import PREFIX, TOKEN, WELCOME_MESSAGE_CHANNEL_ID
+from config.config import PREFIX, TOKEN, WELCOME_MESSAGE_CHANNEL_ID, DOMAIN
+
+import socketio
+
+# welcome message
+
+print("\n ------------- \n   Discord Bot \n -------------")
+
+# ---------------------------------------------------------------------------------------------
 
 # client
 
 client = commands.Bot(command_prefix=PREFIX)
-
+sio = socketio.Client()
 
 # ---------------------------------------------------------------------------------------------
 
@@ -31,6 +39,21 @@ for filename in os.listdir("./cogs"):
 
 # ---------------------------------------------------------------------------------------------
 
+# socket
 
+sio.connect(DOMAIN)
+
+
+@sio.event
+def connect():
+    print("I'm connected!")
+
+
+@sio.on('price_under')
+def on_price_under(data):
+    print('I received a message!', data)
+
+
+# ---------------------------------------------------------------------------------------------
 # running the client on the server
 client.run(TOKEN)
