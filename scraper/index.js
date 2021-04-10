@@ -31,7 +31,6 @@ const run = async (url, targetPrice) => {
     let price = $(this).text();
     let currentPrice = Number(price.replace(/[^0-9.-]+/g, ""));
     console.log(currentPrice);
-    socket.emit("message", currentPrice);
     socket.emit("price_under", currentPrice);
   });
 
@@ -39,7 +38,6 @@ const run = async (url, targetPrice) => {
     let price = $(this).text();
     let currentPrice = Number(price.replace(/[^0-9.-]+/g, ""));
     console.log(currentPrice);
-    socket.emit("message", currentPrice);
     socket.emit("price_under", currentPrice);
   });
   await page.close();
