@@ -6,9 +6,6 @@ from config.config import PREFIX, TOKEN, WELCOME_MESSAGE_CHANNEL_ID, DOMAIN
 
 import socketio
 
-# welcome message
-
-print("\n ------------- \n   Discord Bot \n -------------")
 
 # ---------------------------------------------------------------------------------------------
 
