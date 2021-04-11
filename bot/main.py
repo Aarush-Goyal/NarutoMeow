@@ -14,6 +14,7 @@ import socketio
 client = commands.Bot(command_prefix=PREFIX)
 sio = socketio.Client()
 
+
 # ---------------------------------------------------------------------------------------------
 
 
@@ -37,7 +38,6 @@ for filename in os.listdir("./cogs"):
 # ---------------------------------------------------------------------------------------------
 
 # socket
-
 sio.connect(DOMAIN)
 
 
@@ -46,9 +46,9 @@ def connect():
     print("I'm connected!")
 
 
-@sio.on('price_under')
+@sio.on("price_under")
 def on_price_under(data):
-    print('I received a message!', data)
+    print(f'    \n  {data} \n   ')
 
 
 # ---------------------------------------------------------------------------------------------
