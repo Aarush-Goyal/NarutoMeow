@@ -1,11 +1,11 @@
-FROM python:3.8.5
+FROM node
 
 WORKDIR /app
 
-COPY requirements.txt .
+COPY package.json .
 
-RUN pip install -r requirements.txt
+RUN npm install
 
 COPY . .
 
-CMD ["python", "main.py"]
+CMD ["npm", "start"]
