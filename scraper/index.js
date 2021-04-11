@@ -8,7 +8,7 @@ const socket = io(DOMAIN);
 
 console.log("\n ------------- \n   Scraper \n -------------");
 
-const run = async (url, targetPrice) => {
+const run = async (url, targetPrice, channelId) => {
   const browser = await puppeteer.launch({
     headless: true,
     args: [
@@ -30,22 +30,38 @@ const run = async (url, targetPrice) => {
   $("#priceblock_ourprice", html).each(function () {
     let price = $(this).text();
     let currentPrice = Number(price.replace(/[^0-9.-]+/g, ""));
-    console.log(currentPrice);
-    socket.emit("price_under", currentPrice);
+    if (currentPrice <= targetPrice) {
+      console.log(currentPrice);
+      data = {
+        prodLink: url,
+        currentPrice,
+        targetPrice,
+        channelId,
+      };
+      socket.emit("price_under", data);
+    }
   });
 
   $("#priceblock_dealprice", html).each(function () {
     let price = $(this).text();
     let currentPrice = Number(price.replace(/[^0-9.-]+/g, ""));
-    console.log(currentPrice);
-    socket.emit("price_under", currentPrice);
+    if (currentPrice <= targetPrice) {
+      console.log(currentPrice);
+      data = {
+        prodLink: url,
+        currentPrice,
+        targetPrice,
+        channelId,
+      };
+      socket.emit("price_under", data);
+    }
   });
   await page.close();
   await browser.close();
 };
 
 const checkPrices = (urls) => {
-  urls.map((url) => run(url.url, url.targetPrice));
+  urls.map((url) => run(url.url, url.targetPrice, url.channelId));
 };
 
 const startTracking = (urls) => {
