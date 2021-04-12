@@ -13,6 +13,9 @@ const amznSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  previousPrice: {
+    type: Number,
+  },
 });
 
 export default mongoose.model("amzn", amznSchema);

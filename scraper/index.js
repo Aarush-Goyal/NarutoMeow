@@ -64,28 +64,24 @@ const checkPrices = (urls) => {
   urls.map((url) => run(url.url, url.targetPrice, url.channelId));
 };
 
-const startTracking = (urls) => {
-  let job = new CronJob(
-    // "* * * * *",
-    "*/5 * * * *",
-    () => {
-      checkPrices(urls);
-    },
-    null,
-    true,
-    null,
-    null,
-    true
-  );
-  job.start();
-}; // cron
-
 // -----------------Test only-------------------
 
-axios
-  .get(`${DOMAIN}/api/v1/amzn`)
-  .then((res) => res.data)
-  .then((res) => startTracking(res))
-  .catch((err) => console.log(err));
+let job = new CronJob(
+  // "* * * * *",
+  "*/5 * * * *",
+  () => {
+    axios
+      .get(`${DOMAIN}/api/v1/amzn`)
+      .then((res) => res.data)
+      .then((res) => checkPrices(res))
+      .catch((err) => console.log(err));
+  },
+  null,
+  true,
+  null,
+  null,
+  true
+);
+job.start();
 
 // ----------------------------------------------
