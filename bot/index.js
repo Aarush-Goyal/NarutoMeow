@@ -56,10 +56,13 @@ client.on("message", async (message) => {
 });
 
 socket.on("price_under", (data) => {
-  client.channels.cache
-    .get(data.channelId)
-    .send(
+  channel = client.channels.cache.get(data.channelId);
+
+  if (channel !== undefined) {
+    channel.send(
       `The product ${data.prodLink} is available at the price of ${data.currentPrice} which is lower than the target price of ${data.targetPrice}`
     );
+  }
 });
+
 client.login(TOKEN);
